@@ -1,0 +1,27 @@
+{
+  "name": "supermicro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "dev-watch": "webpack --watch --mode development",
+    "start": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.5.4",
+    "@babel/plugin-transform-react-jsx": "7.7.0",
+    "@babel/preset-env": "7.5.4",
+    "babel-eslint": "10.0.2",
+    "babel-loader": "8.0.6",
+    "babel-plugin-transform-object-rest-spread": "7.0.0-beta.3",
+    "css-loader": "3.2.0",
+    "style-loader": "1.0.0",
+    "webpack": "4.35.3",
+    "webpack-cli": "3.3.6",
+    "webpack-dev-server": "3.8.2"
+  },
+  "author": "Sean Li",
+  "license": "ISC"
+}

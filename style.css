@@ -1,0 +1,57 @@
+:root {
+    --dark: #5b5b5b;
+    --ff-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* {
+    outline: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, article {
+    height: 100vh;
+    width: 100vw;
+    font-family: var(--ff-main);
+}
+
+input, a, input:focus, input:focus-visible {
+    border: none;
+    outline: none;
+    color: var(--dark);
+}
+
+article {
+    display: flex;
+    overflow: hidden;
+}
+
+section {
+    width: 50%;
+}
+
+#control-panel {
+    overflow-x: hidden;
+}
+
+.tab-container {
+    display: block;
+}
+
+.tab {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tab-content-container {
+    position: relative;
+    left: 0;
+    transition: all .3s;
+    white-space: nowrap;
+}
+
+.tab-content {
+    width: 100%;
+    display: inline-block;
+}

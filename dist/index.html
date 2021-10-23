@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hacjathon</title>
+    <link rel="stylesheet" href="../style.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script src="../index.js"></script>
+</head>
+<body>
+    <article>
+        <section id="canvas"></section>
+        <section>
+            <div id="control-panel">
+                <nav class="tab-container">
+                    <div class="tab active" data-tabIdx="0">Select Container</div>
+                    <div class="tab" data-tabIdx="1">Create Container</div>
+                    <div class="tab" data-tabIdx="2">Create Pallet</div>
+                    <div class="tab" data-tabIdx="3">Create Box</div>
+                </nav>
+                <div class="tab-content-container">
+                    <div class="tab-content file-upload">
+                        <input type="file">
+                        <button class="action file-upload">Submit</button>
+                        <div class="preview"></div>
+                    </div><div class="tab-content">
+                    A</div><div class="tab-content">
+                    S</div><div class="tab-content">
+                    F</div>
+                </div>
+            </div>
+        </section>
+    </article>
+</body>
+</html>
