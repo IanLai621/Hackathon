@@ -1,3 +1,7 @@
 .idea/
 
+venv/
+
+*.sqlite3
+
 package-lock.json
