@@ -1,8 +1,30 @@
 class Request {
-    static domain = '';
-    static get = async (url, errorHandler = null) => {
-        const res = await fetch(`${Request.domain}${url}`, {
-            method: 'GET',
+    static domain = 'http://127.0.0.1:8000/';
+    static getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    static post = async (url, parameter, errorHandler = null) => {
+        console.log(parameter)
+        const res = await fetch(`${Request.domain}${url}/`, {
+            method: 'POST',
+            mode: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Request.getCookie('csrftoken'),
+            },
+            body: JSON.stringify(parameter),
         });
 
         if (res.status !== 200) {
@@ -15,9 +37,10 @@ class Request {
         return res.json();
     };
 
-    static getContainer(id = null) {
-        if (typeof id !== 'string' || !id) return {};
-        return {
+    static postContainer(data = null) {
+        if (typeof data !== 'object' || !data) return {};
+        return Request.post('container', data);
+        /*return {
             id: 'xyz-0123465',
             type_name: 'A',
             x: 1615,
@@ -42,7 +65,7 @@ class Request {
                     numbers: 1,
                 }
             }
-        };
+        };*/
     }
 }
 
@@ -118,8 +141,8 @@ class ContainerSimulation {
         this.createLight();
 
         // TODO: remove this
-        this.containerInfo = Request.getContainer('test');
-        this.insertCargo();
+
+        //this.insertCargo();
 
         this.toggleGridHelper();
         this.render();
@@ -139,6 +162,8 @@ class ContainerSimulation {
                     this.toggleGridHelper();
                     return;
                 case 'S':
+                    this.containerInfo = Request.postContainer({ id: 'test' });
+                    console.log(this.containerInfo)
                     this.insertCargo();
                     return;
                 default:
@@ -209,6 +234,7 @@ class ContainerSimulation {
     insertCargo () {
         const { UNIT } = ContainerSimulation;
         let { list, x, y, z } = this.containerInfo;
+        console.log(this.containerInfo)
         x /= UNIT;
         y /= UNIT;
         z /= UNIT;
@@ -356,7 +382,7 @@ function UIInit () {
         } else if (classList.contains('action') && target.tagName === 'BUTTON') {
             if (classList.contains('file-upload')) {
                 // TODO: await this
-                const containerInfo = Request.getContainer('example');
+                const containerInfo = Request.postContainer({ id: 'example' });
                 const preview = controlPanel.querySelector('.tab-content.file-upload .preview');
                 showContainerTable(preview, containerInfo);
             }
