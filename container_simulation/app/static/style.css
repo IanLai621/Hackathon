@@ -55,3 +55,38 @@ section {
     width: 100%;
     display: inline-block;
 }
+
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: green;
+  border: none;
+  float: left;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #4CAF50;
+}
+
+
+.preview{
+  padding: 5px;
+  border: 1px solid black;
+}
+
+table{
+  width: 100%;
+}
+
+table, td, th{
+  border: 1px solid black;
+  padding: 3px 5px;
+  border-collapse: collapse;
+}
