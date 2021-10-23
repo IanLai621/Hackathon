@@ -1,9 +1,9 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 from json import loads
 
 
 def index(request):
-    return HttpResponse("Hello Nuts!")
+    return render(request, 'dist/index.html')
 
 
 def container(request):
