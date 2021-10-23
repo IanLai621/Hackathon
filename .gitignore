@@ -1,7 +1,7 @@
 .idea/
 
 venv/
-
+__pycache__/
 *.sqlite3
 
 package-lock.json
